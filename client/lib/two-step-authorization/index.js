@@ -4,14 +4,15 @@
  * External dependencies
  */
 import debugFactory from 'debug';
+
 const debug = debugFactory( 'calypso:two-step-authorization' );
 
 /**
  * Internal Dependencies
  */
+import analytics from 'lib/analytics';
 import emitter from 'lib/mixins/emitter';
 import userSettings from 'lib/user-settings';
-import analytics from 'lib/analytics';
 import wp from 'lib/wp';
 import { reduxDispatch } from 'lib/redux-bridge';
 import { requestConnectedApplications } from 'state/connected-applications/actions';
