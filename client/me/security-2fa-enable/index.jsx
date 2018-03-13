@@ -271,9 +271,9 @@ class Security2faEnable extends React.Component {
 				<p>
 					{ this.props.translate(
 						'Not sure what this screen means? You may need to download ' +
-							'{{authyLink}}Authy{{/authyLink}} or ' +
-							'{{googleAuthenticatorLink}}Google Authenticator{{/googleAuthenticatorLink}} ' +
-							'for your phone.',
+						'{{authyLink}}Authy{{/authyLink}} or ' +
+						'{{googleAuthenticatorLink}}Google Authenticator{{/googleAuthenticatorLink}} ' +
+						'for your phone.',
 						{
 							components: {
 								authyLink: (
@@ -345,15 +345,18 @@ class Security2faEnable extends React.Component {
 					value={ this.state.verificationCode }
 					onChange={ this.handleChange }
 				/>
+
 				{ 'sms' === this.state.method && this.state.smsRequestPerformed ? (
 					<FormSettingExplanation>
 						{ this.props.translate(
-							'A code has been sent to your device via SMS.  ' +
-								'You may request another code after one minute.'
+							'A code has been sent to your device via SMS. ' +
+							'You may request another code after one minute.'
 						) }
 					</FormSettingExplanation>
 				) : null }
+
 				{ this.possiblyRenderError() }
+
 				{ this.renderInputOptions() }
 			</div>
 		);
@@ -376,11 +379,11 @@ class Security2faEnable extends React.Component {
 				>
 					{ this.state.submittingCode
 						? this.props.translate( 'Enabling…', {
-								context: 'A button label used during Two-Step setup.',
-							} )
+							context: 'A button label used during Two-Step setup.',
+						} )
 						: this.props.translate( 'Enable', {
-								context: 'A button label used during Two-Step setup.',
-							} ) }
+							context: 'A button label used during Two-Step setup.',
+						} ) }
 				</FormButton>
 
 				<FormButton

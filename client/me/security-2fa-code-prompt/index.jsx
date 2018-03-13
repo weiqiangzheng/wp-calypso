@@ -149,26 +149,22 @@ class Security2faCodePrompt extends React.Component {
 	};
 
 	getSubmitButtonLabel = () => {
-		let label;
-
 		switch ( this.props.action ) {
 			case 'disable-two-step':
-				label = this.state.submittingCode
+				return this.state.submittingCode
 					? this.props.translate( 'Disabling Two-Step…' )
 					: this.props.translate( 'Disable Two-Step' );
-				break;
+
 			case 'enable-two-step':
-				label = this.state.submittingCode
+				return this.state.submittingCode
 					? this.props.translate( 'Enabling Two-Step…' )
 					: this.props.translate( 'Enable Two-Step' );
-				break;
+
 			default:
-				label = this.state.submittingCode
+				return this.state.submittingCode
 					? this.props.translate( 'Submitting…' )
 					: this.props.translate( 'Submit' );
 		}
-
-		return label;
 	};
 
 	clearLastError = () => {
