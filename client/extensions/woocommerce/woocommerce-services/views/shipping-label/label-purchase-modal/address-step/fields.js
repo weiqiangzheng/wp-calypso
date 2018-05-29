@@ -32,9 +32,9 @@ import {
 	getShippingLabel,
 	isLoaded,
 	getFormErrors,
-	USPS_COUNTRIES,
 	getCountriesData,
 } from 'woocommerce/woocommerce-services/state/shipping-label/selectors';
+import { ACCEPTED_USPS_ORIGIN_COUNTRY_CODES } from 'woocommerce/woocommerce-services/state/shipping-label/constants';
 
 const AddressFields = props => {
 	const {
@@ -192,7 +192,7 @@ const mapStateToProps = ( state, { group, orderId, siteId } ) => {
 	const shippingLabel = getShippingLabel( state, orderId, siteId );
 	let countriesData = getCountriesData( state, orderId, siteId );
 	if ( 'origin' === group ) {
-		countriesData = pick( countriesData, USPS_COUNTRIES );
+		countriesData = pick( countriesData, ACCEPTED_USPS_ORIGIN_COUNTRY_CODES );
 	}
 	return {
 		...shippingLabel.form[ group ],

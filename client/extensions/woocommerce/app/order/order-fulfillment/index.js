@@ -24,7 +24,7 @@ import {
 	getLabels,
 	isLabelDataFetchError,
 } from 'woocommerce/woocommerce-services/state/shipping-label/selectors';
-import { USPS_COUNTRIES } from 'woocommerce/woocommerce-services/state/shipping-label/constants';
+import { ACCEPTED_USPS_ORIGIN_COUNTRY_CODES } from 'woocommerce/woocommerce-services/state/shipping-label/constants';
 import {
 	areSettingsGeneralLoaded,
 	getStoreLocation,
@@ -145,7 +145,9 @@ class OrderFulfillment extends Component {
 
 	isAddressValidForLabels( address, type ) {
 		if ( isEnabled( 'woocommerce/extension-wcservices/international-labels' ) ) {
-			return 'destination' === type || includes( USPS_COUNTRIES, address.country );
+			return (
+				'destination' === type || includes( ACCEPTED_USPS_ORIGIN_COUNTRY_CODES, address.country )
+			);
 		}
 
 		const { labelCountriesData } = this.props;

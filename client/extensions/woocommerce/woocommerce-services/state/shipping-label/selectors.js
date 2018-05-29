@@ -32,7 +32,7 @@ import {
 	isFetchError as arePackagesErrored,
 } from 'woocommerce/woocommerce-services/state/packages/selectors';
 import { isEnabled as flagIsEnabled } from 'config';
-import { USPS_COUNTRIES } from './constants';
+import { ACCEPTED_USPS_ORIGIN_COUNTRY_CODES } from './constants';
 
 export const getShippingLabel = ( state, orderId, siteId = getSelectedSiteId( state ) ) => {
 	return get(
@@ -191,7 +191,7 @@ const getAddressErrors = (
 	} );
 
 	if ( countriesData[ country ] ) {
-		if ( includes( USPS_COUNTRIES, country ) ) {
+		if ( includes( ACCEPTED_USPS_ORIGIN_COUNTRY_CODES, country ) ) {
 			if ( ! /^\d{5}(?:-\d{4})?$/.test( postcode ) ) {
 				errors.postcode = translate( 'Invalid ZIP code format' );
 			}
