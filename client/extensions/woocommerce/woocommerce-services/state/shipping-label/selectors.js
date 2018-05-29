@@ -31,7 +31,7 @@ import {
 	isLoaded as arePackagesLoaded,
 	isFetchError as arePackagesErrored,
 } from 'woocommerce/woocommerce-services/state/packages/selectors';
-import { isEnabled as flagIsEnabled } from 'config';
+import { isEnabled } from 'config';
 import { ACCEPTED_USPS_ORIGIN_COUNTRY_CODES } from './constants';
 
 export const getShippingLabel = ( state, orderId, siteId = getSelectedSiteId( state ) ) => {
@@ -45,11 +45,6 @@ export const getShippingLabel = ( state, orderId, siteId = getSelectedSiteId( st
 export const isLoaded = ( state, orderId, siteId = getSelectedSiteId( state ) ) => {
 	const shippingLabel = getShippingLabel( state, orderId, siteId );
 	return shippingLabel && shippingLabel.loaded;
-};
-
-export const isEnabled = ( state, orderId, siteId = getSelectedSiteId( state ) ) => {
-	const shippingLabel = getShippingLabel( state, orderId, siteId );
-	return shippingLabel && shippingLabel.enabled;
 };
 
 export const isFetching = ( state, orderId, siteId = getSelectedSiteId( state ) ) => {
@@ -144,10 +139,7 @@ export const getCountriesData = ( state, orderId, siteId = getSelectedSiteId( st
 
 	const shippingLabel = getShippingLabel( state, orderId, siteId );
 	const { countriesData } = shippingLabel.storeOptions;
-	if (
-		flagIsEnabled( 'woocommerce/extension-wcservices/international-labels' ) ||
-		! countriesData
-	) {
+	if ( isEnabled( 'woocommerce/extension-wcservices/international-labels' ) || ! countriesData ) {
 		return countriesData;
 	}
 
