@@ -183,10 +183,11 @@ const getAddressErrors = (
 	} );
 
 	if ( countriesData[ country ] ) {
-		if ( includes( ACCEPTED_USPS_ORIGIN_COUNTRY_CODES, country ) ) {
-			if ( ! /^\d{5}(?:-\d{4})?$/.test( postcode ) ) {
-				errors.postcode = translate( 'Invalid ZIP code format' );
-			}
+		if (
+			includes( ACCEPTED_USPS_ORIGIN_COUNTRY_CODES, country ) &&
+			! /^\d{5}(?:-\d{4})?$/.test( postcode )
+		) {
+			errors.postcode = translate( 'Invalid ZIP code format' );
 		}
 
 		if ( ! isEmpty( countriesData[ country ].states ) && ! state ) {
