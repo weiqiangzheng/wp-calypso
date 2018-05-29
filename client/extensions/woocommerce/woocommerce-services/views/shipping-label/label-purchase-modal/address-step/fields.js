@@ -185,6 +185,7 @@ AddressFields.propTypes = {
 	allowChangeCountry: PropTypes.bool.isRequired,
 	errors: PropTypes.oneOfType( [ PropTypes.object, PropTypes.bool ] ).isRequired,
 	group: PropTypes.string.isRequired,
+	countriesData: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ( state, { group, orderId, siteId } ) => {
