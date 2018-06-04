@@ -42,10 +42,13 @@ class CloneDestinationStep extends Component {
 	goToNextStep = () => {
 		const { form: { siteName, siteUrl } } = this.state;
 
-		SignupActions.submitSignupStep( { stepName: this.props.stepName }, [], {
-			destinationSiteName: siteName,
-			destinationSiteUrl: siteUrl,
-		} );
+		SignupActions.submitSignupStep(
+			{ stepName: this.props.stepName },
+			{
+				destinationSiteName: siteName,
+				destinationSiteUrl: siteUrl,
+			}
+		);
 
 		this.props.goToNextStep();
 	};
