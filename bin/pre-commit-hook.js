@@ -43,7 +43,7 @@ dirtyFiles.forEach( file => console.log(
 const toPrettify = files.filter( file => ! dirtyFiles.has( file ) );
 toPrettify.forEach( file => console.log( `Prettier formatting file: ${ file } because it contains the @format flag` ) );
 
-execSync( `npx --no-install prettier --write --requirePragma ${ toPrettify.join( ' ' ) }` );
+execSync( `./node_modules/.bin/prettier --write --requirePragma ${ toPrettify.join( ' ' ) }` );
 execSync( `git add ${ toPrettify.join( ' ' ) }` );
 
 // linting should happen after formatting
