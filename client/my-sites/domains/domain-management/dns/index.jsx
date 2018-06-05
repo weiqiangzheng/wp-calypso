@@ -27,8 +27,9 @@ import VerticalNav from 'components/vertical-nav';
 
 class Dns extends React.Component {
 	static propTypes = {
-		domains: PropTypes.object.isRequired,
+		domains: PropTypes.array.isRequired,
 		dns: PropTypes.object.isRequired,
+		isRequestingSiteDomains: PropTypes.bool.isRequired,
 		selectedDomainName: PropTypes.string.isRequired,
 		selectedSite: PropTypes.oneOfType( [ PropTypes.object, PropTypes.bool ] ).isRequired,
 	};
@@ -52,9 +53,15 @@ class Dns extends React.Component {
 	}
 
 	render() {
-		const { dns, selectedDomainName, selectedSite, translate } = this.props;
+		const {
+			dns,
+			isRequestingSiteDomains,
+			selectedDomainName,
+			selectedSite,
+			translate,
+		} = this.props;
 
-		if ( ! dns.hasLoadedFromServer ) {
+		if ( ! dns.hasLoadedFromServer || isRequestingSiteDomains ) {
 			return <DomainMainPlaceholder goBack={ this.goBack } />;
 		}
 
