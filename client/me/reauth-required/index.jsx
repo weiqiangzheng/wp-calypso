@@ -209,7 +209,7 @@ const ReauthRequired = createReactClass( {
 						</FormLabel>
 
 						<FormVerificationCodeInput
-							autoFocus={ true }
+							autoFocus
 							id="code"
 							isError={ this.props.twoStepAuthorization.codeValidationFailed() }
 							name="code"
