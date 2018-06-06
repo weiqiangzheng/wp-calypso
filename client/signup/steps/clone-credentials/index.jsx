@@ -56,6 +56,7 @@ class CloneCredentialsStep extends Component {
 						role={ 'alternate' /* eslint-disable-line */ }
 						siteId={ originBlogId }
 						siteUrl={ destinationSiteUrl }
+						requirePath
 					/>
 				</Card>
 			</div>
