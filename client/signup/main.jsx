@@ -31,7 +31,7 @@ import cookie from 'cookie';
  * Internal dependencies
  */
 import config from 'config';
-import SignupDependencyStore from 'lib/signup/dependency-store';
+import { getSignupProgress } from 'state/signup/progress/selectors';
 import { getSignupDependencyStore } from 'state/signup/dependency-store/selectors';
 import SignupProgressStore from 'lib/signup/progress-store';
 import SignupFlowController from 'lib/signup/flow-controller';
@@ -70,11 +70,9 @@ class Signup extends React.Component {
 
 	constructor( props, context ) {
 		super( props, context );
-		SignupDependencyStore.setReduxStore( context.store );
 
 		this.state = {
 			login: false,
-			progress: SignupProgressStore.get(),
 			dependencies: props.signupDependencies,
 			loadingScreenStartTime: undefined,
 			resumingStep: undefined,
@@ -84,13 +82,12 @@ class Signup extends React.Component {
 		};
 	}
 
+	// TODO: Move this to componentDidUpdate when reduxifying this section
 	loadProgressFromStore = () => {
 		const newProgress = SignupProgressStore.get(),
 			invalidSteps = some( newProgress, matchesProperty( 'status', 'invalid' ) ),
 			waitingForServer = ! invalidSteps && this.isEveryStepSubmitted(),
 			startLoadingScreen = waitingForServer && ! this.state.loadingScreenStartTime;
-
-		this.setState( { progress: newProgress } );
 
 		if ( this.isEveryStepSubmitted() ) {
 			this.goToFirstInvalidStep();
@@ -310,7 +307,7 @@ class Signup extends React.Component {
 
 	componentWillUnmount() {
 		debug( 'Signup component unmounted' );
-		SignupProgressStore.off( 'change', this.loadProgressFromStore );
+		SignupProgressStore.unsubscribe( this.loadProgressFromStore );
 	}
 
 	loginRedirectTo = path => {
@@ -393,7 +390,7 @@ class Signup extends React.Component {
 		const flowSteps = flows.getFlow( nextFlowName, this.props.stepName ).steps,
 			currentStepIndex = indexOf( flowSteps, this.props.stepName ),
 			nextStepName = flowSteps[ currentStepIndex + 1 ],
-			nextProgressItem = this.state.progress[ currentStepIndex + 1 ],
+			nextProgressItem = this.props.progress[ currentStepIndex + 1 ],
 			nextStepSection = ( nextProgressItem && nextProgressItem.stepSectionName ) || '';
 
 		this.goToStep( nextStepName, nextStepSection, nextFlowName );
@@ -509,7 +506,7 @@ class Signup extends React.Component {
 	render() {
 		if (
 			! this.props.stepName ||
-			( this.positionInFlow() > 0 && this.state.progress.length === 0 ) ||
+			( this.positionInFlow() > 0 && this.props.progress.length === 0 ) ||
 			this.state.resumingStep
 		) {
 			return null;
@@ -549,6 +546,7 @@ export default connect(
 		domainsWithPlansOnly: getCurrentUser( state )
 			? currentUserHasFlag( state, DOMAINS_WITH_PLANS_ONLY )
 			: true,
+		progress: getSignupProgress( state ),
 		signupDependencies: getSignupDependencyStore( state ),
 		isLoggedIn: isUserLoggedIn( state ),
 	} ),
