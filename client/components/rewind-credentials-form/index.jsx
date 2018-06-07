@@ -39,6 +39,10 @@ export class RewindCredentialsForm extends Component {
 		requirePath: PropTypes.bool,
 	};
 
+	static defaultProps = {
+		requirePath: false,
+	};
+
 	state = {
 		showPrivateKeyField: false,
 		form: {
@@ -218,15 +222,17 @@ export class RewindCredentialsForm extends Component {
 				</div>
 
 				<FormFieldset>
-					<Button
-						disabled={ formIsSubmitting }
-						onClick={ this.toggleAdvancedSettings }
-						borderless={ true }
-						primary={ true }
-						className="rewind-credentials-form__advanced-button"
-					>
-						{ translate( 'Advanced settings' ) }
-					</Button>
+					{ ! requirePath && (
+						<Button
+							disabled={ formIsSubmitting }
+							onClick={ this.toggleAdvancedSettings }
+							borderless={ true }
+							primary={ true }
+							className="rewind-credentials-form__advanced-button"
+						>
+							{ translate( 'Advanced settings' ) }
+						</Button>
+					) }
 					{ ( showAdvancedSettings || requirePath ) && (
 						<div className="rewind-credentials-form__advanced-settings">
 							<FormFieldset className="rewind-credentials-form__path">
