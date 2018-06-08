@@ -29,6 +29,8 @@ import observe from 'lib/mixins/data-observe';
 import { recordGoogleEvent } from 'state/analytics/actions';
 import userUtilities from 'lib/user/utils';
 
+// autofocus is used for tracking purposes, not an a11y issue
+/* eslint-disable jsx-a11y/no-autofocus */
 const ReauthRequired = createReactClass( {
 	displayName: 'ReauthRequired',
 	mixins: [ observe( 'twoStepAuthorization' ) ],
@@ -204,9 +206,7 @@ const ReauthRequired = createReactClass( {
 
 				<form onSubmit={ this.submitForm }>
 					<FormFieldset>
-						<FormLabel htmlFor="code">
-							{ this.props.translate( 'Verification Code' ) }
-						</FormLabel>
+						<FormLabel htmlFor="code">{ this.props.translate( 'Verification Code' ) }</FormLabel>
 
 						<FormVerificationCodeInput
 							autoFocus
@@ -262,5 +262,6 @@ const ReauthRequired = createReactClass( {
 		this.setState( { [ name ]: checked } );
 	},
 } );
+/* eslint-enable jsx-a11y/no-autofocus */
 
 export default connect( null, { recordGoogleEvent } )( localize( ReauthRequired ) );
