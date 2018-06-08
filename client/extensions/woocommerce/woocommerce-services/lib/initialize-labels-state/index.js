@@ -3,7 +3,7 @@
 /**
  * External dependencies
  */
-import { isEmpty, mapValues } from 'lodash';
+import { isEmpty, isUndefined, mapValues } from 'lodash';
 
 /**
  * Checks the address object for the required fields
@@ -34,7 +34,15 @@ export default data => {
 		};
 	}
 
-	const { formData, labelsData, paperSize, storeOptions, canChangeCountries } = data;
+	const {
+		formData,
+		labelsData,
+		paperSize,
+		storeOptions,
+		canChangeCountries,
+		markOrdersComplete,
+		emailTrackingInfo,
+	} = data;
 
 	//old WCS required a phone number and detected normalization status based on the existence of the phone field
 	//newer versions send the normalized flag
@@ -50,8 +58,8 @@ export default data => {
 		labels: labelsData || [],
 		paperSize,
 		storeOptions,
-		fulfillOrder: true,
-		emailDetails: true,
+		fulfillOrder: isUndefined( markOrdersComplete ) ? true : markOrdersComplete,
+		emailDetails: isUndefined( emailTrackingInfo ) ? true : emailTrackingInfo,
 		form: {
 			orderId: formData.order_id,
 			origin: {
