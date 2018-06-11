@@ -8,7 +8,7 @@ import i18n from 'i18n-calypso';
 /**
  * Internal dependencies
  */
-import { action as ActionTypes } from '../constants';
+import { action as ActionTypes } from 'lib/upgrades/action-types';
 import { isInitialized as isDomainInitialized } from 'lib/domains';
 import Dispatcher from 'dispatcher';
 import DnsStore from 'lib/domains/dns/store';
