@@ -21,7 +21,7 @@ import CartPlanAd from './cart-plan-ad';
 import CartPlanDiscountAd from './cart-plan-discount-ad';
 import Sidebar from 'layout/sidebar';
 import CartBodyLoadingPlaceholder from 'my-sites/checkout/cart/cart-body/loading-placeholder';
-import { action as upgradesActionTypes } from 'lib/upgrades/action-types';
+import * as upgradesActionTypes from 'lib/upgrades/action-types';
 import scrollIntoViewport from 'lib/scroll-into-viewport';
 
 class SecondaryCart extends Component {

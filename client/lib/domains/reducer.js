@@ -11,7 +11,7 @@ import { sortBy } from 'lodash';
 /**
  * Internal dependencies
  */
-import { action as UpgradesActionTypes } from 'lib/upgrades/action-types';
+import * as UpgradesActionTypes from 'lib/upgrades/action-types';
 import { getSelectedDomain, isInitialized } from './';
 
 const debug = debugFactory( 'calypso:lib:domains:store' );
