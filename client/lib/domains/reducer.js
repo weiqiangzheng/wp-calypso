@@ -11,7 +11,17 @@ import { sortBy } from 'lodash';
 /**
  * Internal dependencies
  */
-import * as UpgradesActionTypes from 'lib/upgrades/action-types';
+import {
+	DOMAIN_TRANSFER_CODE_REQUEST_COMPLETED,
+	DOMAINS_FETCH,
+	DOMAINS_FETCH_COMPLETED,
+	DOMAINS_FETCH_FAILED,
+	DOMAINS_INITIALIZE,
+	PRIMARY_DOMAIN_SET,
+	PRIMARY_DOMAIN_SET_COMPLETED,
+	PRIMARY_DOMAIN_SET_FAILED,
+	PRIVACY_PROTECTION_ENABLE_COMPLETED,
+} from 'lib/upgrades/action-types';
 import { getSelectedDomain, isInitialized } from './';
 
 const debug = debugFactory( 'calypso:lib:domains:store' );
@@ -50,7 +60,7 @@ function reducer( state, payload ) {
 		privateDomain;
 
 	switch ( type ) {
-		case UpgradesActionTypes.DOMAINS_INITIALIZE:
+		case DOMAINS_INITIALIZE:
 			if ( isInitialized( state, siteId ) ) {
 				return state;
 			}
@@ -61,12 +71,12 @@ function reducer( state, payload ) {
 				list: null,
 			} );
 
-		case UpgradesActionTypes.DOMAINS_FETCH:
+		case DOMAINS_FETCH:
 			return updateSiteState( state, siteId, {
 				isFetching: true,
 			} );
 
-		case UpgradesActionTypes.DOMAINS_FETCH_COMPLETED:
+		case DOMAINS_FETCH_COMPLETED:
 			return updateSiteState( state, siteId, {
 				isFetching: false,
 				hasLoadedFromServer: true,
@@ -74,19 +84,19 @@ function reducer( state, payload ) {
 				settingPrimaryDomain: false,
 			} );
 
-		case UpgradesActionTypes.DOMAINS_FETCH_FAILED:
+		case DOMAINS_FETCH_FAILED:
 			debug( action.error );
 
 			return updateSiteState( state, siteId, {
 				isFetching: false,
 			} );
 
-		case UpgradesActionTypes.PRIMARY_DOMAIN_SET:
+		case PRIMARY_DOMAIN_SET:
 			return updateSiteState( state, siteId, {
 				settingPrimaryDomain: true,
 			} );
 
-		case UpgradesActionTypes.PRIMARY_DOMAIN_SET_COMPLETED:
+		case PRIMARY_DOMAIN_SET_COMPLETED:
 			return updateSiteState( state, siteId, {
 				settingPrimaryDomain: false,
 				list: sortBy(
@@ -97,17 +107,17 @@ function reducer( state, payload ) {
 				),
 			} );
 
-		case UpgradesActionTypes.PRIMARY_DOMAIN_SET_FAILED:
+		case PRIMARY_DOMAIN_SET_FAILED:
 			return updateSiteState( state, siteId, {
 				settingPrimaryDomain: false,
 			} );
 
-		case UpgradesActionTypes.PRIVACY_PROTECTION_ENABLE_COMPLETED:
+		case PRIVACY_PROTECTION_ENABLE_COMPLETED:
 			return updateDomainState( state, action.siteId, action.domainName, {
 				privateDomain: true,
 			} );
 
-		case UpgradesActionTypes.DOMAIN_TRANSFER_CODE_REQUEST_COMPLETED:
+		case DOMAIN_TRANSFER_CODE_REQUEST_COMPLETED:
 			domainData = getSelectedDomain( {
 				domains: getBySite( state, action.siteId ),
 				selectedDomainName: action.domainName,

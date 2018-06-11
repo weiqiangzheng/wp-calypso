@@ -7,7 +7,7 @@
 import { assign, flowRight, pick } from 'lodash';
 import i18n from 'i18n-calypso';
 import Dispatcher from 'dispatcher';
-import * as upgradesActionTypes from 'lib/upgrades/action-types';
+import { TRANSACTION_STEP_SET } from 'lib/upgrades/action-types';
 import debugFactory from 'debug';
 
 /**
@@ -86,7 +86,7 @@ Emitter( CartSynchronizer.prototype );
 CartSynchronizer.prototype.handleDispatch = function( payload ) {
 	const { action } = payload;
 
-	if ( action.type !== upgradesActionTypes.TRANSACTION_STEP_SET ) {
+	if ( action.type !== TRANSACTION_STEP_SET ) {
 		return;
 	}
 
