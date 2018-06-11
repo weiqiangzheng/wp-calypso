@@ -130,7 +130,10 @@ CommentActions.defaultProps = {
 };
 
 const mapDispatchToProps = ( dispatch, ownProps ) => {
-	const { post: { site_ID: siteId, ID: postId }, commentId } = ownProps;
+	const {
+		post: { site_ID: siteId, ID: postId },
+		commentId,
+	} = ownProps;
 
 	return {
 		approveComment: () => dispatch( changeCommentStatus( siteId, postId, commentId, 'approved' ) ),

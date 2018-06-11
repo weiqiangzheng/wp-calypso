@@ -101,7 +101,13 @@ class ImporterHeader extends React.PureComponent {
 	};
 
 	render() {
-		const { importerStatus: { importerState }, icon, isEnabled, title, description } = this.props;
+		const {
+			importerStatus: { importerState },
+			icon,
+			isEnabled,
+			title,
+			description,
+		} = this.props;
 		const canCancel =
 			isEnabled && ! includes( [ appStates.UPLOADING, ...stopStates ], importerState );
 		const isScary = includes( [ ...cancelStates ], importerState );

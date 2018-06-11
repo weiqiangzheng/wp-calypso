@@ -169,7 +169,9 @@ class PurchaseNotice extends Component {
 
 	renderCreditCardExpiringNotice() {
 		const { editCardDetailsPath, purchase, translate } = this.props;
-		const { payment: { creditCard } } = purchase;
+		const {
+			payment: { creditCard },
+		} = purchase;
 
 		if (
 			isExpired( purchase ) ||

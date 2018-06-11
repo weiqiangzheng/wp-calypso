@@ -123,7 +123,10 @@ class ImportingPane extends React.PureComponent {
 	};
 
 	getSuccessText = () => {
-		const { site: { slug }, progress: { page, post } } = this.props.importerStatus,
+		const {
+				site: { slug },
+				progress: { page, post },
+			} = this.props.importerStatus,
 			pageLink = <a href={ '/pages/' + slug } />,
 			pageText = translate( 'Pages', { context: 'noun' } ),
 			postLink = <a href={ '/posts/' + slug } />,

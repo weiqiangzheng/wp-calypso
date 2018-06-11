@@ -106,7 +106,7 @@ class AdsMain extends Component {
 						path: '/ads/settings' + pathSuffix,
 						id: 'ads-settings',
 					},
-				]
+			  ]
 			: [];
 	}
 

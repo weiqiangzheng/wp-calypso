@@ -160,13 +160,13 @@ class EasyTab extends Component {
 												{ key === 'prime'
 													? translate( 'Fetching %(url)s to prime cache', {
 															args: { url: site && site.URL },
-														} )
+													  } )
 													: translate( 'Fetching %(key)s copy of %(url)s', {
 															args: {
 																key: key,
 																url: site && site.URL,
 															},
-														} ) }
+													  } ) }
 												<Gridicon
 													className="wp-super-cache__cache-test-results-icon"
 													icon={

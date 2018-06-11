@@ -126,7 +126,10 @@ export class MySitesSidebar extends Component {
 				tipTarget="menus"
 				label={ translate( 'Stats' ) }
 				className="stats"
-				selected={ itemLinkMatches( [ '/stats', '/store/stats', '/google-my-business/stats' ], path ) }
+				selected={ itemLinkMatches(
+					[ '/stats', '/store/stats', '/google-my-business/stats' ],
+					path
+				) }
 				link={ statsLink }
 				onNavigate={ this.trackStatsClick }
 				icon="stats-alt"

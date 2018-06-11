@@ -290,11 +290,11 @@ class CreditCardForm extends Component {
 							? translate( 'Saving Card…', {
 									context: 'Button label',
 									comment: 'Credit card',
-								} )
+							  } )
 							: translate( 'Save Card', {
 									context: 'Button label',
 									comment: 'Credit card',
-								} ) }
+							  } ) }
 					</FormButton>
 				</CompactCard>
 			</form>

@@ -22,7 +22,9 @@ describe( 'FormCountrySelect', () => {
 	} );
 
 	test( 'should render a select box with a placeholder when the country list provided is empty', () => {
-		const select = shallow( <FormCountrySelect countriesList={ countriesList } translate={ identity } /> );
+		const select = shallow(
+			<FormCountrySelect countriesList={ countriesList } translate={ identity } />
+		);
 
 		const options = select.find( 'option' );
 		expect( options ).to.have.length( 1 );
@@ -34,7 +36,9 @@ describe( 'FormCountrySelect', () => {
 	test( 'should render a select box with options matching the country list provided', () => {
 		countriesList.fetch();
 
-		const select = shallow( <FormCountrySelect countriesList={ countriesList } translate={ identity } /> );
+		const select = shallow(
+			<FormCountrySelect countriesList={ countriesList } translate={ identity } />
+		);
 
 		const options = select.find( 'option' );
 		expect( options ).to.have.length( 2 );

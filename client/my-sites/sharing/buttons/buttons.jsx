@@ -119,7 +119,7 @@ class SharingButtons extends Component {
 				? {
 						// Like button should be disabled if the Likes Jetpack module is deactivated.
 						disabled_likes: true,
-					}
+				  }
 				: {};
 
 		return Object.assign( {}, settings, disabledSettings, this.state.values );

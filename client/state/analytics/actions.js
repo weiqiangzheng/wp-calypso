@@ -30,7 +30,7 @@ const joinAnalytics = ( analytics, action ) =>
 		? dispatch => {
 				dispatch( analytics );
 				dispatch( action );
-			}
+		  }
 		: merge( {}, action, { meta: { analytics: mergedMetaData( analytics, action ) } } );
 
 export const composeAnalytics = ( ...analytics ) => ( {
@@ -163,14 +163,16 @@ export const enhanceWithSiteType = ( action, getState ) => {
 	if ( site !== null ) {
 		return merge( action, {
 			meta: {
-				analytics: [ {
-					payload: {
-						properties: {
-							site_type: site.jetpack ? 'jetpack' : 'wpcom',
-						}
-					}
-				} ]
-			}
+				analytics: [
+					{
+						payload: {
+							properties: {
+								site_type: site.jetpack ? 'jetpack' : 'wpcom',
+							},
+						},
+					},
+				],
+			},
 		} );
 	}
 

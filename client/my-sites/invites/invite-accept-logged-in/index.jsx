@@ -104,11 +104,11 @@ class InviteAcceptLoggedIn extends React.Component {
 							? this.props.translate( 'Sign In as %(email)s', {
 									context: 'button',
 									args: { email: this.props.invite.sentTo },
-								} )
+							  } )
 							: this.props.translate( 'Register as %(email)s', {
 									context: 'button',
 									args: { email: this.props.invite.sentTo },
-								} ) }
+							  } ) }
 					</Button>
 				</div>
 			</Card>

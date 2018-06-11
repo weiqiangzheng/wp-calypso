@@ -48,7 +48,7 @@ class EmailedLoginLinkSuccessfully extends React.Component {
 						args: {
 							emailAddress,
 						},
-					} )
+				  } )
 				: translate( 'We just emailed you a link.' ),
 			' ',
 			translate( 'Please check your inbox and click the link to log in.' ),

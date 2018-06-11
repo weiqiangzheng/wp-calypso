@@ -48,7 +48,7 @@ class StatsVideoSummary extends Component {
 							...item,
 							period: moment( item.period ).format( 'MMM D' ),
 						};
-					} )
+				  } )
 				: [];
 		let selectedBar = this.state.selectedBar;
 		if ( ! selectedBar && !! data.length ) {

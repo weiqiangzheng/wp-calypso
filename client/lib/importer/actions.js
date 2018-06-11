@@ -186,7 +186,10 @@ export const startImport = ( siteId, importerType ) => {
 };
 
 export function startImporting( importerStatus ) {
-	const { importerId, site: { ID: siteId } } = importerStatus;
+	const {
+		importerId,
+		site: { ID: siteId },
+	} = importerStatus;
 
 	unlockImport( importerId );
 
@@ -199,7 +202,10 @@ export function startImporting( importerStatus ) {
 }
 
 export const startUpload = ( importerStatus, file ) => dispatch => {
-	const { importerId, site: { ID: siteId } } = importerStatus;
+	const {
+		importerId,
+		site: { ID: siteId },
+	} = importerStatus;
 
 	wpcom
 		.uploadExportFile( siteId, {

@@ -52,7 +52,7 @@ const AddItemDialog = props => {
 			? translate( '%(item)s from {{pckg/}}', {
 					args: { item: item.name },
 					components: { pckg: getPackageNameElement( pckgId ) },
-				} )
+			  } )
 			: item;
 
 		const onChange = event =>
