@@ -8004,7 +8004,8 @@
         },
         "ansi-regex": {
           "version": "2.1.1",
-          "bundled": true
+          "bundled": true,
+          "optional": true
         },
         "aproba": {
           "version": "1.2.0",
@@ -8369,7 +8370,8 @@
         },
         "safe-buffer": {
           "version": "5.1.1",
-          "bundled": true
+          "bundled": true,
+          "optional": true
         },
         "safer-buffer": {
           "version": "2.1.2",
@@ -8417,6 +8419,7 @@
         "strip-ansi": {
           "version": "3.0.1",
           "bundled": true,
+          "optional": true,
           "requires": {
             "ansi-regex": "^2.0.0"
           }
@@ -8455,11 +8458,13 @@
         },
         "wrappy": {
           "version": "1.0.2",
-          "bundled": true
+          "bundled": true,
+          "optional": true
         },
         "yallist": {
           "version": "3.0.2",
-          "bundled": true
+          "bundled": true,
+          "optional": true
         }
       }
     },
@@ -9523,9 +9528,9 @@
       "integrity": "sha1-xg7taebY/bazEEofy8ocGS3FtQE="
     },
     "ignore": {
-      "version": "3.3.5",
-      "resolved": "https://registry.npmjs.org/ignore/-/ignore-3.3.5.tgz",
-      "integrity": "sha512-JLH93mL8amZQhh/p6mfQgVBH3M6epNq3DfsXsTSuSrInVjwyYlFE1nv2AgfRCC8PoOhM0jwQ5v8s9LgbK7yGDw==",
+      "version": "3.3.8",
+      "resolved": "https://registry.npmjs.org/ignore/-/ignore-3.3.8.tgz",
+      "integrity": "sha512-pUh+xUQQhQzevjRHHFqqcTy0/dP/kS9I8HSrUydhihjuD09W6ldVWFtIrwhXdUJHis3i2rZNqEHpZH/cbinFbg==",
       "dev": true
     },
     "immediate": {
@@ -17896,7 +17901,8 @@
             "ansi-regex": {
               "version": "2.1.1",
               "bundled": true,
-              "dev": true
+              "dev": true,
+              "optional": true
             },
             "aproba": {
               "version": "1.2.0",
@@ -18311,7 +18317,8 @@
             "safe-buffer": {
               "version": "5.1.1",
               "bundled": true,
-              "dev": true
+              "dev": true,
+              "optional": true
             },
             "safer-buffer": {
               "version": "2.1.2",
@@ -18367,6 +18374,7 @@
               "version": "3.0.1",
               "bundled": true,
               "dev": true,
+              "optional": true,
               "requires": {
                 "ansi-regex": "^2.0.0"
               }
@@ -18410,12 +18418,14 @@
             "wrappy": {
               "version": "1.0.2",
               "bundled": true,
-              "dev": true
+              "dev": true,
+              "optional": true
             },
             "yallist": {
               "version": "3.0.2",
               "bundled": true,
-              "dev": true
+              "dev": true,
+              "optional": true
             }
           }
         },
